@@ -1,15 +1,18 @@
 {% extends 'base.html'%}
 {% import 'news_macros.html' as macro %}
 
-<div class="container">
+<!-- <div class="container"> -->
 
-    {% block styles%}
+{% block styles%}
 
-    {{ super() }}
+{{ super() }}
     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <div class="container-fluid" id="allsources">
+        <div class="overlay">
+            {{ macro.display_Source_articles(articles)}}
+        </div>
 
-    {% endblock %}
-{% block content %}
-    {{ macro.display_Source_articles(articles)}}
+    </div>
+
 {% endblock %}
-</div>
+

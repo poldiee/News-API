@@ -120,7 +120,7 @@ def search_articles(article_name):
 
         if search_response['articles']:
             all_search_results = search_response['articles']
-            search_outcome = process_search(all_search_results)
+            search_outcome = (all_search_results)
     return search_outcome 
 
 

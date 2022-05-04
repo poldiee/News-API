@@ -9,7 +9,7 @@ This is an application that will help people who want to get realtime news witho
 
 ## Live Demo
 
-[Link]() to visit site
+[Link](https://github.com/poldiee/News-API.git) to visit site
 
 ## Screenshot
 

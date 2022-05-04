@@ -7,14 +7,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <h3 class="text-center" style="margin-top:5%;">Health Article</h3>
-        {{macro.display_new_articles(health)}}
-    </div>
-    <div class="row">
-        <h3 class="text-center">Tech Articles</h3>
+<div class="container-fluid" id="allsources">
+    <div class="overlay container-fluid">    
+        <h2 class="text-center headers">Tech Articles</h2>
         {{macro.display_new_articles(tech)}}
+        <h2 class="text-center headers">Health News Articles</h2>
+        {{macro.display_new_articles(health)}}
     </div>
 </div>
 {% endblock %}

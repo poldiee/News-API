@@ -3,7 +3,7 @@ from app import app
 from .models import news
 
 Sources = news.Sources
-
+Articles = news.Articles
 
 
 def get_sources(category):
@@ -41,3 +41,39 @@ def process_new_sources(sources_list):
         sources_outcome.append(new_source)
 
     return sources_outcome
+def get_articles(article):
+
+    api_key = app.config['API_KEY']
+
+    url = app.config['NEWS_ARTICLES_APL_URL']
+
+    articles_url = url.format(article,api_key)
+
+    with urllib.request.urlopen(articles_url) as url:
+        articles_data = url.read()
+        articles_response = json.loads(articles_data)
+
+        articles_outcome = None
+
+        if articles_response['articles']:
+            articles_outcome_items = articles_response['articles']
+            articles_outcome = process_new_articles(articles_outcome_items)
+    return articles_outcome
+
+def process_new_articles(articles_list):
+    articles_outcome = []
+
+    for one_article in articles_list:
+        source = one_article.get("source")
+        author = one_article.get("author")
+        description = one_article.get("description")
+        title = one_article.get("title")
+        url = one_article.get("url")
+        image_url = one_article.get("image_url")
+        publish_time = one_article.get("publish_time")
+
+        new_article = Articles(source, author, title, description, url, image_url, publish_time)
+        articles_outcome.append(new_article)
+
+    return articles_outcome
+
